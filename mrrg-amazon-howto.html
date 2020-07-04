@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<title>How To Setup A Custom MRRG Amazon Link</title>
+<script src="qrcode.js"></script>
+</head>
+<body bgcolor="black">
+<center>
+<a href="https://www.amazon.com/?tag=wwwmrrgnet-20"><img src="mrrg-logo.jpg" style="max-width:200px;width:auto;height:auto;" /></a>
+<h2><font color="white">In order to create your own custom Amazon link to share on social media sites all you need to do is fill in your skater name below and click submit, a window will open where you can share your link on Facebook.<br /><br />
+<form name="link" onSubmit="return handleClick()">
+Skater Name: <input type="text" name="skater" /><br />
+<input type="submit" value="submit" />
+</form><br />
+<div id="more-sharing" style="display:none;">
+<u>More sharing options</u><br /> 
+<a href id="twitter" src="#" target="_blank">Click here to share on Twitter</a><br />
+<a href id="googleplus" src="#" target="_blank">Click here to share on Google+</a><br />
+<a href id="facebook" src="#" target="_blank">Click here to share on Facebook+</a><br />
+<a href id="other" src="#" target="_blank">Copy this link to share elsewhere</a><br /><br />
+You can also scan the following QR Code for sharing<br /><br /><div style="background-color:#aaa;padding:10px;"><span id="qrcode"></span></div>
+</div>
+<!--For example: if a skater named Froggin Molly wanted to create her own custom link she would share the URL <a href="http://helpderby.com/?id=frogginmolly">helpderby.com/frogginmolly</a>-->
+</font></h2>
+</center>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-2081905-60', 'ordotmobile.com');
+  ga('send', 'pageview');
+
+
+// open fb share window
+function handleClick()
+{
+	// open facebook window
+	str = document.link.skater.value.replace(/\s+/g, '');
+	str = str.toLowerCase();
+	window.open( "http://www.facebook.com/sharer/sharer.php?u=http://www.helpderby.com/?id="+str, "myWindow", "status = 1, height = 500, width = 400, resizable = 0" );
+	//alert(document.link.skater.value);
+
+	// show other links
+	document.getElementById('more-sharing').style.display = 'block';
+	document.getElementById('twitter').href = 'https://twitter.com/home?status=http://www.helpderby.com/?id='+str;
+	document.getElementById('googleplus').href = 'https://plus.google.com/share?url=http://www.helpderby.com/?id='+str;
+	document.getElementById('facebook').href = 'http://www.facebook.com/sharer/sharer.php?u=http://www.helpderby.com/?id='+str;
+	document.getElementById('other').href = 'http://www.helpderby.com/?id='+str;
+	new QRCode(document.getElementById("qrcode"), "http://www.helpderby.com/?id="+str);
+
+	return false;
+}
+</script>
+</body>
+</html>
